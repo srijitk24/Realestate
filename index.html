@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Srijit Karmakar Real Estate</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+
+    /* GENERAL RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* BODY */
+body {
+  background: linear-gradient(to right, #f8fafc, #e2e8f0);
+  color: #333;
+}
+
+/* NAVIGATION */
+nav {
+  background-color: #1f2937;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+nav h1 {
+  color: #60a5fa;
+  font-size: 1.8rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+nav ul li a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #60a5fa;
+}
+
+/* SIDEBAR */
+.container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 280px;
+  background-color: #111827;
+  color: white;
+  padding: 40px 20px;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-pic-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic-box img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #60a5fa;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* CONTENT */
+.content {
+  margin-left: 280px;
+  padding: 50px;
+  width: calc(100% - 280px);
+}
+
+header {
+  background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+header h2 {
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  color: #3b82f6;
+}
+
+section {
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.project-card {
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: #f9fafb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.image-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+}
+
+.image-slider img {
+  border-radius: 10px;
+  height: 200px;
+  width: auto;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #1f2937;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+a.btn {
+  background-color: #3b82f6;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+a.btn:hover {
+  background-color: #2563eb;
+}
+
+ul.location-highlights {
+  list-style: none;
+  padding: 0;
+}
+
+ul.location-highlights li {
+  margin-bottom: 0.8rem;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .content {
+    margin-left: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  nav h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header h2 {
+    font-size: 1rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  .profile-pic-box img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+
+* {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f4f4f4, #eaeef3);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .animated-icon {
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 280px;
+      background-color: #111827;
+      color: white;
+      padding: 40px 20px;
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+      height: 100vh;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .profile-pic-box {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-pic-box img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #60a5fa;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: #60a5fa;
+    }
+
+    .sidebar p {
+      font-size: 14px;
+      margin: 8px 0;
+      color: #d1d5db;
+    }
+
+    .sidebar a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    .content {
+      margin-left: 280px;
+      padding: 50px;
+      width: calc(100% - 280px);
+    }
+
+    .content section {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+    .content section:hover {
+      transform: translateY(-5px);
+    }
+
+    header h1 {
+      font-size: 40px;
+      color: #e8f1fc;
+      margin-bottom: 5px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    }
+
+    header h2 {
+      font-size: 22px;
+      font-weight: normal;
+      color: #3b82f6;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #1f2937;
+      border-left: 4px solid #3b82f6;
+      padding-left: 10px;
+      margin-bottom: 15px;
+    }
+
+    p, li {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #374151;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .sidebar div {
+        flex: 1 1 100%;
+      }
+
+      .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+      }
+    }
+  
+
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+    body { background: linear-gradient(to right, #f8fafc, #e2e8f0); color: #333; }
+    nav { background-color: #1f2937; color: white; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    nav h1 { color: #60a5fa; font-size: 1.8rem; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav ul li a { color: #cbd5e1; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+    nav ul li a:hover { color: #60a5fa; }
+    header { background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c'); background-size: cover; background-position: center; padding: 5rem 2rem; text-align: center; color: white; }
+    header h2 { font-size: 2.8rem; margin-bottom: 1rem; }
+    header p { font-size: 1.2rem; color: #e0f2fe; }
+    section { padding: 2rem; margin: 2rem auto; max-width: 1000px; background-color: white; border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); }
+    footer { text-align: center; padding: 2rem; background-color: #1f2937; color: #9ca3af; font-size: 0.9rem; }
+    .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+    .tab-content.active { display: block; }
+    .project-card { border: 1px solid #d1d5db; border-radius: 10px; padding: 1.5rem; margin-bottom: 1rem; background-color: #f9fafb; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); }
+    .image-slider { display: flex; overflow-x: auto; gap: 1rem; }
+    .image-slider img { border-radius: 10px; height: 200px; width: auto; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    ul.location-highlights li { margin-bottom: 0.8rem; }
+    ul.location-highlights { list-style: none; padding: 0; }
+    a.btn { background-color: #3b82f6; padding: 0.6rem 1.2rem; border-radius: 8px; color: white; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: bold; }
+    a.btn:hover { background-color: #2563eb; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="sidebar">
+      <div>
+        <div class="profile-pic-box">
+          <img src="https://media.licdn.com/dms/image/v2/D4D03AQFvK8VzFz2yPA/profile-displayphoto-shrink_400_400/B4DZaq0SNMHEAk-/0/1746622555697?e=1752105600&v=beta&t=Yb1667VRBWdoQbgdNbby_XxYMo068Bz8eENTAlHvHes" alt="Ranjit Karmakar Profile Picture">
+        </div>
+        <h1>Ranjit Karmakar</h1>
+        <p>A Real Estate Consultant | 15+ Years of Experience</p>
+        <br>
+        <p><i class="fas fa-envelope"></i> ranjitkarmakar171@gmail.com</p>
+        <p><i class="fas fa-phone"></i> 9732419324, 8918936613</p>
+        <p><i class="fas fa-map-marker-alt"></i> 171/1 Ashoknagar, Kolkata</p>
+      </div>
+    </div>
+
+    <div class="content">
+      <header>
+        <h1 class="animated-icon">Welcome to the Future of Real Estate</h1>
+        <h2>One Stop Solution For All Real Estate Queries</h2>
+      </header>
+
+      
+
+
+  <nav>
+    <h1>Real Estate Consultant</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#ashoknagar">Ashoknagar</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  
+
+  <section id="about" class="tab-content active">
+        <section class="about">
+          <h2>About Me</h2>
+          <p>I am Ranjit Karmakar, a dedicated real estate consultant based in Ashoknagar with over 15 years of experience in the industry. Throughout my career, I have successfully handled more than 30 real estate projects and provided expert consultation to over 200 clients, helping them make informed and profitable property decisions. My work includes extensive research and market analysis, which has enabled me to stay ahead of trends and deliver customized solutions tailored to each client's needs. Passionate about real estate and driven by results, I continue to strive for excellence in every project I undertake.</p>
+        </section>
+  
+        <section>
+          <h2>Experience</h2>
+          <p><strong>Real Estate Consultant & Manager – Self-Employed | 2009 - present</strong></p>
+          <ul>
+            <li>Manage real estate consulting, and strategic investments.</li>
+            <li>Provide end-to-end solutions for property acquisition and development.</li>
+            <li>Develop strategies to enhance sales and lead generation.</li>
+          </ul>
+        </section>
+
+  
+        <section>
+          <h2>Languages</h2>
+          <ul>
+            <li>Bengali (Native)</li>
+            <li>English</li>
+            <li>Hindi</li>
+          </ul>
+        </section>
+  </section>
+
+  <section id="ashoknagar" class="tab-content">
+    <h2>About Ashoknagar</h2>
+    <p>Ashoknagar is a planned cultural hub in West Bengal with a rich history, heritage, and infrastructure. Known for ONGC’s oilfield discovery and a legacy of political and cultural activism, the town is well-connected by NH112 and railways to Kolkata.</p>
+    <p> <a href="https://en.wikipedia.org/wiki/Ashoknagar_Kalyangarh" target="_blank">Ashoknagar_Kalyangarh Wikipedia</a></p>
+    <p>Ashoknagar Kalyangarh is a city and a municipality in Barasat Sadar subdivision of North 24 Parganas district in the state of West Bengal, India. It is a part of the area covered by Habra Urban agglomeration. Ashoknagar is the first discovered oilfield in West Bengal and East India. The oilfield was discovered in 2018 by ONGC.
+
+      Ashoknagar has a heritage of political activism, high-quality education, and culture. Ashoknagar Kalyangarh was planned by Dr. B.C Roy and was later named after the leader Ashoke Kumar Sen [citation needed]. The Congressional leaders Tarun Kanti Ghosh and Keshab Bhattacharjee and the CPI leaders Dr. Sadhan Sen, Bikash Ray Chaudhuri, Nani Kar and Chitta Ranjan Basu were principal architects of Ashoknagar Kalyangarh.
+      
+      The first social & cultural organisations Janayug Sangskritik Sangstha played a vital role to build a cultural environment in the 70s decade . CPI(ML) Organizer Atmajit Chowdhury, Dramatist Swadesh Munshi, Social Worker Parlay Ghosh, Trapada Bhattacharjee, Gauranga Kar, Biswajit Das were contributed notable works in town's cultural development.
+      
+      The first unit in this district of West Bengal State Government Employees Pensioners' Samity was formed in Ashokenagar under the leadership of J.C Kundu which worked towards the safeguarding of the rights of retired employees of the state government.
+      
+      The area has two parks, Sanghati Park and Millennium Science Park. There are four English medium schools in Ashoknagar. The area is connected to Kolkata through rail(Bongaon-Sealdah) and road (Jessore Road/NH112/AH1) networks.
+      
+      Here was the Kalyani Spinning Mill which is now converted into a Textile Park. The city previously had a unit of RIC and a chemical factory; both were closed down by the state government.</p>
+      <br>
+      <img src="https://www.akmweb.in/wp-content/uploads/2016/05/WARD-BOUNDARIES-WITH-WARD-NUMBERS.jpg" alt="Ashoknagar_Kalyangarh map" style="width:300px; border-radius:10px;">
+  </section>
+
+ 
+
+  <section id="location" class="tab-content">
+    <h2>Location Highlights</h2>
+    <ul class="location-highlights">
+      <li>📍 <strong>Proximity to Kolkata:</strong> Just 42 km away from the state capital.</li>
+      <li>🛣️ <strong>NH112 Access:</strong> Fast road connectivity to major towns and cities.</li>
+      <li>🚉 <strong>Rail Network:</strong> Frequent local trains to Sealdah and surrounding hubs.</li>
+      <li>🏫 <strong>Educational Institutions:</strong> Quality schools and colleges in close proximity.</li>
+      <li>🏥 <strong>Medical Services:</strong> Modern healthcare within 10 km.</li>
+      <li>🌳 <strong>Greenery:</strong> Calm, pollution-free, and eco-friendly environment.</li>
+    </ul>
+  </section>
+
+
+  <section id="faq" class="tab-content">
+    <h2>Frequently Asked Questions</h2>
+    <ul>
+      <li><strong>Q:</strong> How can I book an appointment?<br><strong>A:</strong> Contact us via WhatsApp or phone to schedule a visit.</li>
+      <li><strong>Q:</strong> why Ashokanagar kalyangarh is the best place to invest?<br><strong>A:</strong>Ashoknagar Kalyangarh is considered a promising place to invest in land due to its rapid infrastructure development, affordable property rates, proximity to Kolkata, and growing demand from both residential and commercial buyers.
+
+        Here are key reasons why it's attractive for land investment:
+        
+        <li><b>Strategic Location:</b> Located close to Kolkata with good road and rail connectivity, making it ideal for commuters and future development.</li>
+        
+        <li><b>Affordable Prices:</b> Land is still reasonably priced compared to nearby urban areas, offering high potential for appreciation.</li>
+        
+        <li><b>Upcoming Infrastructure:</b> Improvements in roads, utilities, and municipal services are steadily increasing the area's value.</li>
+        
+        <li><b>Urban Expansion:</b> As Kolkata expands, suburbs like Ashoknagar Kalyangarh are becoming key growth zones.</li>
+        
+        <li><b>Peaceful Environment:</b> The area offers a blend of urban convenience and a quieter, greener lifestyle—appealing to families and retirees.</li>
+        
+        <li><b>Commercial Interest:</b> Small businesses, educational institutions, and retail outlets are steadily growing, increasing land demand.</li>
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact" class="tab-content">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:ranjitkarmakar171@gmail.com">ranjitkarmakar171@gmail.com</a></p>
+    <p>Phone: +91 8918936613</p>
+    <p>Phone: +91 9732419324</p>
+    <p>Address: 171/1 Ashoknagar, Kolkata</p>
+  </section>
+
+  <footer>
+    <p>©Real Estate constultant. Website designed with purpose and passion by Srijit Karmakar.</p>
+  </footer>
+
+  <a href="https://wa.me/918918936613?text=Hello,%20I'm%20interested%20in%20your%20real%20estate%20projects." target="_blank" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="Chat on WhatsApp" style="height: 60px; width: 60px;">
+  </a>
+
+  <script>
+    const tabs = document.querySelectorAll('nav ul li a');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(tab.getAttribute('href'));
+        contents.forEach(c => c.classList.remove('active'));
+        target.classList.add('active');
+        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
